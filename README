@@ -1,0 +1,49 @@
+u-boot-sh4-1.3.1_stm23_0045.tar.gz
+-------------------------
+1) Unpack:
+
+	$ tar -xzvf u-boot-sh4-1.3.1_stm23_0045.tar.gz
+
+2) Change to source directory:
+
+	$ cd u-boot-sh4-1.3.1_stm23_0045
+
+3) Config:
+
+	$ make pdk7105se_config
+
+4) Compile, build u-boot.bin:
+
+	$ make 
+
+5) build smit_gb620_uboot_issue.bin on the file of factory_issue
+
+	./make_factroy_uboot
+	
+	
+
+diff   smit_gb620_uboot_issue.bin   u-boot.bin
+----------
+	 smit_gb620_uboot_issue.bin is add app version on spi special address.
+
+uboot_update_tool
+--------
+	make uboot update file, build iptvubootupdate.bin.
+	
+	1) copy u-boot.bin to uboot_update_tool
+	   cp u-boot.bin uboot_update_tool/
+	   
+	2) build iptvubootupdate.bin
+		 source makeupdateSW.sh
+
+release
+--------
+	u-boot.bin
+	smit_gb620_uboot_issue.bin
+	iptvubootupdate.bin
+	
+	finally, put smit_gb620_uboot_issue.bin into spi flash, copy iptvubootupdate.bin to fat usb.
+
+	Good luck...
+
+	Jason <jiagong@smit.com.cn>  2010-10-10 update
